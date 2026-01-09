@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | VetAnimative - Precious Moments</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo"><i class="fas fa-paw"></i> Vet<span>Animative</span></div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="team.html" class="nav-link">Our Team</a>
+                <a href="shop-services.html" class="nav-link">Shop & Services</a>
+                <a href="gallery.html" class="nav-link active">Gallery</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="bag-wrapper" onclick="location.href='bag.html'" role="button" aria-label="View Shopping Bag">
+                    <i class="fas fa-shopping-bag"></i><span class="bag-badge">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section style="background: var(--accent); padding: 80px 0; text-align: center;">
+            <div class="container">
+                <h1 style="font-size: 3rem; margin-bottom: 10px;">Pet Gallery</h1>
+                <p style="color: var(--primary); font-weight: 600;">Explore the happy lives of our furry patients</p>
+            </div>
+        </section>
+
+        <section class="section container">
+            <h2 class="sr-only">Our Photo Collections</h2>
+            
+            <div class="tab-container mb-50">
+                <button class="tab-btn active" onclick="switchGallery('official')">
+                    <i class="fas fa-clinic-medical"></i> Official Clinic
+                </button>
+                <button class="tab-btn" onclick="switchGallery('visitor')">
+                    <i class="fas fa-camera"></i> From Our Visitors
+                </button>
+            </div>
+
+            <div id="official-gallery" class="gallery-content">
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="assets/img/gallery/premium-pet-hotel.jpg" alt="Premium Pet Suite at VetAnimative">
+                        <div class="gallery-overlay"><h3>Premium Pet Suite</h3></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/img/gallery/our-surgical-room.jpg" alt="Our Professional Surgical Room">
+                        <div class="gallery-overlay"><h3>Our Surgical Room</h3></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/img/gallery/diagnostic-laboratory.jpg" alt="Diagnostic Laboratory Equipment">
+                        <div class="gallery-overlay"><h3>Diagnostic Laboratory</h3></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/img/gallery/grooming-station.jpg" alt="Professional Grooming Station">
+                        <div class="gallery-overlay"><h3>Grooming Station</h3></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="visitor-gallery" class="gallery-content hidden">
+                <div class="gallery-grid" id="visitor-grid">
+                    </div>
+            </div>
+        </section>
+
+        <section class="section container text-center" style="background: var(--light-gray); border-radius: 30px; padding: 60px;">
+            <h2>Want to see your pet here?</h2>
+            <p class="mb-20">Leave a review on our home page and upload your pet's photo!</p>
+            <a href="index.html#reviews" class="btn btn-primary">Go to Review Section</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h2 style="color: white; font-size: 1.5rem;">Vet<span style="color: var(--secondary);">Animative</span></h2>
+                    <p>Dedicated care for your beloved animal companions since 2010.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Navigate</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="shop-services.html">Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> hello@vetanimative.com</p>
+                    <p><i class="fas fa-phone"></i> +1 234 567 890</p>
+                </div>
+            </div>
+            <hr style="border-top: 1px solid rgba(255,255,255,0.1); margin: 30px 0;">
+            <p class="text-center" style="font-size: 0.8rem;">&copy; 2026 VetAnimative Template. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

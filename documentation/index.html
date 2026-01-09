@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation | VetAnimative HTML Template</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --primary: #6c5ce7; --secondary: #00cec9; --dark: #2d3436; --bg: #f9f9fb; }
+        body { font-family: 'Quicksand', sans-serif; line-height: 1.6; color: var(--dark); margin: 0; background: var(--bg); display: flex; }
+        
+        /* Sidebar Documentation */
+        .doc-sidebar { width: 260px; background: white; height: 100vh; position: fixed; border-right: 1px solid #eee; padding: 30px 20px; box-sizing: border-box; }
+        .doc-sidebar h2 { color: var(--primary); font-size: 1.2rem; margin-bottom: 30px; border-bottom: 2px solid var(--primary); padding-bottom: 10px; }
+        .doc-sidebar ul { list-style: none; padding: 0; }
+        .doc-sidebar li { margin-bottom: 15px; }
+        .doc-sidebar a { text-decoration: none; color: #666; font-weight: 600; transition: 0.3s; }
+        .doc-sidebar a:hover { color: var(--primary); padding-left: 5px; }
+
+        /* Content Area */
+        .doc-content { margin-left: 260px; padding: 60px 80px; max-width: 900px; }
+        .header-box { background: linear-gradient(135deg, var(--primary), var(--secondary)); padding: 40px; border-radius: 20px; color: white; margin-bottom: 40px; }
+        section { background: white; padding: 40px; border-radius: 20px; margin-bottom: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); }
+        h1, h2, h3 { color: var(--dark); margin-top: 0; }
+        
+        .code-block { background: #2d3436; color: #fab1a0; padding: 20px; border-radius: 10px; font-family: 'Courier New', monospace; font-size: 0.9rem; overflow-x: auto; margin: 20px 0; }
+        .badge { background: var(--primary); color: white; padding: 4px 10px; border-radius: 5px; font-size: 0.8rem; }
+        .info-box { background: #e1f5fe; border-left: 5px solid #03a9f4; padding: 15px; margin: 20px 0; border-radius: 0 10px 10px 0; }
+    </style>
+</head>
+<body>
+
+    <div class="doc-sidebar">
+        <h2>VetAnimative</h2>
+        <ul>
+            <li><a href="#intro">Introduction</a></li>
+            <li><a href="#structure">Folder Structure</a></li>
+            <li><a href="#admin">Admin Dashboard</a></li>
+            <li><a href="#custom">Customization</a></li>
+            <li><a href="#credits">Credits & Sources</a></li>
+        </ul>
+    </div>
+
+    <div class="doc-content">
+        <div class="header-box">
+            <h1>Documentation v1.0</h1>
+            <p>Thank you for purchasing <strong>VetAnimative</strong> - Premium Pet Clinic HTML Template.</p>
+        </div>
+
+        <section id="intro">
+            <h2>1. Introduction</h2>
+            <p>VetAnimative is a modern, high-performance HTML template designed for Veterinary Clinics and Pet Shops. It features a unique <strong>Zero-Backend Admin Panel</strong> that allows you to manage content without needing a MySQL database.</p>
+        </section>
+
+        <section id="structure">
+            <h2>2. Folder Structure</h2>
+            <p>The zip package contains the following structure:</p>
+            <div class="code-block">
+                VetAnimative/<br>
+                ├── HTML/ <span style="color:#666">-- All page files</span><br>
+                ├── assets/<br>
+                │   ├── css/ <span style="color:#666">-- Stylesheets</span><br>
+                │   ├── js/ <span style="color:#666">-- Main JavaScript</span><br>
+                │   └── img/ <span style="color:#666">-- Locally stored images</span><br>
+                ├── documentation/ <span style="color:#666">-- This file</span><br>
+                └── readme.txt
+            </div>
+        </section>
+
+        <section id="admin">
+            <h2>3. Admin Dashboard System</h2>
+            <p>To manage your website content, you don't need PHP. Simply open <strong>admin.html</strong> in your browser.</p>
+            <div class="info-box">
+                <strong>Default Credentials:</strong><br>
+                Username: <code>admin</code><br>
+                Password: <code>admin</code>
+            </div>
+            <ul>
+                <li><strong>Stats:</strong> View real-time income statistics.</li>
+                <li><strong>Blog:</strong> Add, edit, or delete articles.</li>
+                <li><strong>Team:</strong> Manage doctors and staff profiles.</li>
+                <li><strong>Catalog:</strong> Manage products and services.</li>
+                <li><strong>Gallery:</strong> Update your pet activity feed.</li>
+            </ul>
+        </section>
+
+        <section id="custom">
+            <h2>4. Customization</h2>
+            <h3>Changing Colors</h3>
+            <p>Open <code>assets/css/style.css</code> and find the <code>:root</code> section to change the primary brand colors:</p>
+            <div class="code-block">
+                :root {<br>
+                &nbsp;&nbsp;--primary: #6c5ce7; /* Change your brand color here */<br>
+                &nbsp;&nbsp;--secondary: #00cec9;<br>
+                }
+            </div>
+        </section>
+
+        <section id="credits">
+            <h2>5. Credits & Sources</h2>
+            <ul>
+                <li><strong>Fonts:</strong> Quicksand via Google Fonts (OFL License)</li>
+                <li><strong>Icons:</strong> FontAwesome 6.0 (CC BY 4.0 License)</li>
+                <li><strong>Images:</strong> Unsplash.com (Demo purposes only, not included in download)</li>
+            </ul>
+        </section>
+
+        <footer style="text-align: center; color: #aaa; margin-top: 50px;">
+            <p>&copy; 2026 VetAnimative Template. All rights reserved.</p>
+        </footer>
+    </div>
+
+</body>
+</html>

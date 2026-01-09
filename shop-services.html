@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop & Services | VetAnimative</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .catalog-item { transition: opacity 0.4s ease, transform 0.4s ease; }
+        .hidden { display: none !important; }
+        
+        .catalog-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
+        .filter-group { 
+            display: flex; 
+            justify-content: center; 
+            gap: 15px; 
+            margin-bottom: 40px; 
+            flex-wrap: wrap; 
+        }
+
+        .filter-btn { 
+            padding: 10px 25px; 
+            border-radius: 30px; 
+            border: 2px solid var(--primary); 
+            background: transparent; 
+            cursor: pointer; 
+            font-weight: 600; 
+            transition: 0.3s; 
+            color: var(--primary);
+        }
+
+        .filter-btn.active { 
+            background: var(--primary); 
+            color: white; 
+        }
+
+        /* Class pembantu untuk struktur heading tersembunyi (Aksesibilitas) */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo"><i class="fas fa-paw"></i> Vet<span>Animative</span></div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="team.html" class="nav-link">Our Team</a>
+                <a href="shop-services.html" class="nav-link active">Shop & Services</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="bag-wrapper" onclick="location.href='bag.html'" role="button" aria-label="View Shopping Bag">
+                    <i class="fas fa-shopping-bag"></i><span class="bag-badge">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="section container">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <h1 style="font-size: 2.5rem;">Professional <span class="text-secondary">Services</span></h1>
+                <p>High-quality medical and grooming care for your pets.</p>
+            </div>
+
+            <div class="filter-group" id="service-filters">
+                <button class="filter-btn active" onclick="filterCatalog('service', 'all', this)">All Services</button>
+                <button class="filter-btn" onclick="filterCatalog('service', 'health', this)">Health Care</button>
+                <button class="filter-btn" onclick="filterCatalog('service', 'grooming', this)">Grooming</button>
+            </div>
+
+            <div class="grid-3" id="service-grid">
+                <article class="card-item catalog-item" data-type="health">
+                    <i class="fas fa-heartbeat" style="font-size: 2.5rem; color: var(--secondary); margin-bottom: 15px;"></i>
+                    <h2>Vaccination</h2>
+                    <p>Complete immunization package for all ages.</p>
+                    <p style="font-weight: 700; color: var(--primary); margin: 15px 0;">IDR 450,000</p>
+                    <button class="btn btn-primary" onclick="addToBag('Vaccination', 450000, 'service')" style="width: 100%;">Book Appointment</button>
+                </article>
+
+                <article class="card-item catalog-item" data-type="health">
+                    <i class="fas fa-microscope" style="font-size: 2.5rem; color: var(--secondary); margin-bottom: 15px;"></i>
+                    <h2>Dental Check</h2>
+                    <p>Professional teeth cleaning and oral health check.</p>
+                    <p style="font-weight: 700; color: var(--primary); margin: 15px 0;">IDR 250,000</p>
+                    <button class="btn btn-primary" onclick="addToBag('Dental Check', 250000, 'service')" style="width: 100%;">Book Appointment</button>
+                </article>
+
+                <article class="card-item catalog-item" data-type="grooming">
+                    <i class="fas fa-cut" style="font-size: 2.5rem; color: var(--secondary); margin-bottom: 15px;"></i>
+                    <h2>Full Grooming</h2>
+                    <p>Bath, haircut, nail clip, and ear cleaning.</p>
+                    <p style="font-weight: 700; color: var(--primary); margin: 15px 0;">IDR 350,000</p>
+                    <button class="btn btn-primary" onclick="addToBag('Full Grooming', 350000, 'service')" style="width: 100%;">Book Appointment</button>
+                </article>
+            </div>
+        </section>
+
+        <hr class="container" style="border: 0; border-top: 1px solid #eee;">
+
+        <section class="section container">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <h2 style="font-size: 2.5rem;">Pet <span class="text-secondary">Shop</span></h2>
+                <p>Premium supplies for your happy companions.</p>
+            </div>
+
+            <div class="filter-group" id="shop-filters">
+                <button class="filter-btn active" onclick="filterCatalog('shop', 'all', this)">All Products</button>
+                <button class="filter-btn" onclick="filterCatalog('shop', 'food', this)">Food</button>
+                <button class="filter-btn" onclick="filterCatalog('shop', 'acc', this)">Accessories</button>
+            </div>
+
+            <div class="grid-3" id="shop-grid">
+                <article class="card-item catalog-item" data-type="food">
+                    <img src="assets/img/shop/Premium-Kibble.jpg" alt="Premium Dog Kibble Food">
+                    <h3>Premium Kibble</h3>
+                    <p>High protein food for active dogs.</p>
+                    <p style="color: var(--secondary); font-weight: 700;">IDR 500,000</p>
+                    <button class="btn btn-primary" onclick="addToBag('Premium Kibble', 500000, 'product')" style="width: 100%; margin-top: 10px;">Add to Bag</button>
+                </article>
+
+                <article class="card-item catalog-item" data-type="acc">
+                    <img src="assets/img/shop/leather-collar.jpg" alt="Leather Pet Collar Accessory">
+                    <h3>Leather Collar</h3>
+                    <p>Durable and stylish leather material.</p>
+                    <p style="color: var(--secondary); font-weight: 700;">IDR 150,000</p>
+                    <button class="btn btn-primary" onclick="addToBag('Leather Collar', 150000, 'product')" style="width: 100%; margin-top: 10px;">Add to Bag</button>
+                </article>
+
+                <article class="card-item catalog-item" data-type="acc">
+                    <img src="assets/img/shop/travel-carrier.jpg" alt="Pet Travel Carrier Box">
+                    <h3>Travel Carrier</h3>
+                    <p>Safe and comfortable for long trips.</p>
+                    <p style="color: var(--secondary); font-weight: 700;">IDR 650,000</p>
+                    <button class="btn btn-primary" onclick="addToBag('Travel Carrier', 650000, 'product')" style="width: 100%; margin-top: 10px;">Add to Bag</button>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: #222; color: #eee; padding: 60px 0 30px;">
+        <div class="container" style="text-align: center;">
+            <p>&copy; 2026 VetAnimative - The Best Care for Your Best Friends.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Logika Filter Katalog
+        function filterCatalog(section, category, button) {
+            // 1. Update UI Button Aktif
+            const filterGroup = button.parentElement;
+            filterGroup.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            // 2. Tentukan Grid Mana yang Difilter
+            const gridId = section === 'service' ? 'service-grid' : 'shop-grid';
+            const items = document.getElementById(gridId).querySelectorAll('.catalog-item');
+
+            // 3. Eksekusi Filter
+            items.forEach(item => {
+                const itemType = item.getAttribute('data-type');
+                
+                if (category === 'all' || itemType === category) {
+                    item.classList.remove('hidden');
+                    // Efek Fade In
+                    item.style.opacity = '0';
+                    setTimeout(() => { item.style.opacity = '1'; }, 10);
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

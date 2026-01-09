@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team | VetAnimative - Professional Specialists</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo" onclick="location.href='index.html'" style="cursor:pointer">
+                <i class="fas fa-paw"></i> Vet<span>Animative</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="team.html" class="nav-link active">Our Team</a>
+                <a href="shop-services.html" class="nav-link">Shop & Services</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="bag-wrapper" onclick="location.href='bag.html'" role="button" aria-label="View Bag">
+                    <i class="fas fa-shopping-bag"></i><span class="bag-badge">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section style="background: var(--accent); padding: 60px 0; text-align: center;">
+            <div class="container">
+                <h1 style="font-size: 3rem; margin-bottom: 10px;">Meet Our Specialists</h1>
+                <p style="color: var(--primary); font-weight: 600;">Home / Our Team</p>
+            </div>
+        </section>
+
+        <section class="section container">
+            <h2 class="sr-only">Our Veterinarian List</h2> <div class="grid-3">
+                <article class="card-item" style="cursor: pointer;" onclick="showDoctorDetail('ray')">
+                    <img src="assets/img/doctors/Dr-Alexander-Ray.jpg" alt="Dr. Alexander Ray - Senior Veterinarian" style="border-radius: 20px; margin-bottom: 20px; width: 100%;">
+                    <h3>Dr. Alexander Ray</h3> <p style="color: var(--secondary); font-weight: 700;">Senior Veterinarian</p>
+                    <p style="font-size: 0.9rem; margin: 10px 0;">Click to view educational background & bio.</p>
+                    <div style="color: var(--primary); font-size: 1.2rem; display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
+                        <i class="fab fa-linkedin" aria-hidden="true"></i>
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                    </div>
+                </article>
+
+                <article class="card-item" style="cursor: pointer;" onclick="showDoctorDetail('jenkins')">
+                    <img src="assets/img/doctors/Dr-Sarah-Jenkins.jpg" alt="Dr. Sarah Jenkins - Surgeon Specialist" style="border-radius: 20px; margin-bottom: 20px; width: 100%;">
+                    <h3>Dr. Sarah Jenkins</h3>
+                    <p style="color: var(--secondary); font-weight: 700;">Surgeon Specialist</p>
+                    <p style="font-size: 0.9rem; margin: 10px 0;">Click to view educational background & bio.</p>
+                    <div style="color: var(--primary); font-size: 1.2rem; display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
+                        <i class="fab fa-linkedin" aria-hidden="true"></i>
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                    </div>
+                </article>
+
+                <article class="card-item" style="cursor: pointer;" onclick="showDoctorDetail('wong')">
+                    <img src="assets/img/doctors/Dr-Michael-Wong.jpg" alt="Dr. Michael Wong - Pet Nutritionist" style="border-radius: 20px; margin-bottom: 20px; width: 100%;">
+                    <h3>Dr. Michael Wong</h3>
+                    <p style="color: var(--secondary); font-weight: 700;">Pet Nutritionist</p>
+                    <p style="font-size: 0.9rem; margin: 10px 0;">Click to view educational background & bio.</p>
+                    <div style="color: var(--primary); font-size: 1.2rem; display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
+                        <i class="fab fa-linkedin" aria-hidden="true"></i>
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <div id="doctorModal" class="modal-overlay" style="display: none;" role="dialog" aria-modal="true">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeDoctorDetail()" role="button" aria-label="Close Modal">&times;</span>
+            <div id="modalBody" style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 30px; align-items: start;">
+                </div>
+        </div>
+    </div>
+
+    <footer style="background: #222; color: #eee; padding: 60px 0 30px;">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h2 style="color: white; font-size: 1.5rem; margin-bottom: 20px;">Vet<span style="color: var(--secondary);">Animative</span></h2>
+                    <p style="color: #bbb;">Premium care for your companions since 2012.</p>
+                </div>
+                <div class="footer-col">
+                    <h3 style="color: white; font-size: 1.2rem; margin-bottom: 15px;">Links</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="index.html" style="color: #bbb; text-decoration: none; margin-bottom: 8px; display: inline-block;">Home</a></li>
+                        <li><a href="shop-services.html" style="color: #bbb; text-decoration: none; margin-bottom: 8px; display: inline-block;">Catalog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 style="color: white; font-size: 1.2rem; margin-bottom: 15px;">Support</h3>
+                    <p style="color: #bbb;">24/7 Emergency Case</p>
+                </div>
+                <div class="footer-col" style="opacity: 0.5;">
+                    <a href="admin.html" style="font-size: 0.8rem; color: #bbb; text-decoration: none;"><i class="fas fa-lock"></i> Staff Login</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

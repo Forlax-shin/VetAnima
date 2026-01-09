@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | VetAnimative</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .bag-section { background: white; border-radius: 20px; padding: 30px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .item-row { display: flex; align-items: center; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #f5f5f5; }
+        .item-row:last-child { border: none; }
+        .hidden { display: none !important; }
+        
+        /* Form Styling */
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--primary); font-size: 0.9rem; }
+        .form-control { 
+            width: 100%; padding: 12px 15px; border-radius: 12px; 
+            border: 1px solid #ddd; font-family: 'Quicksand', sans-serif; box-sizing: border-box;
+            transition: 0.3s;
+        }
+        .form-control:focus { border-color: var(--secondary); outline: none; box-shadow: 0 0 0 3px rgba(0, 206, 201, 0.1); }
+        
+        /* Modal Transfer */
+        #paymentModal {
+            display: none; position: fixed; z-index: 9999; left: 0; top: 0; 
+            width: 100%; height: 100%; background: rgba(0,0,0,0.8); 
+            align-items: center; justify-content: center; backdrop-filter: blur(8px);
+        }
+        .modal-premium {
+            background: white; border-radius: 30px; width: 90%; max-width: 450px; 
+            overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            animation: popUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .modal-header-color {
+            background: linear-gradient(135deg, #6c5ce7, #00cec9);
+            padding: 30px 20px; color: white; text-align: center;
+        }
+        .bank-card { background: #f8fafc; border-radius: 20px; padding: 20px; margin: 20px 0; }
+        .bank-line { display: flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
+        .bank-line:last-child { border: none; }
+
+        @keyframes popUp { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo" onclick="location.href='index.html'" style="cursor:pointer">
+                <i class="fas fa-paw"></i> Vet<span>Animative</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="shop-services.html" class="nav-link"><i class="fas fa-arrow-left"></i> Back to Shop</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="section container">
+        <h1 style="margin-bottom: 40px;"><i class="fas fa-shopping-bag text-secondary"></i> Complete Your <span class="text-secondary">Order</span></h1>
+
+        <div class="grid-2" style="grid-template-columns: 1.8fr 1.2fr; align-items: start; gap: 30px;">
+            <div class="bag-content">
+                <div class="bag-section">
+                    <h2 style="font-size: 1.5rem; margin-bottom: 20px; color: var(--primary);"><i class="fas fa-list"></i> Order Items</h2>
+                    <div id="service-list"></div>
+                    <div id="product-list"></div>
+                </div>
+
+                <div id="service-form" class="bag-section hidden">
+                    <h2 style="font-size: 1.3rem; margin-bottom: 20px;"><i class="fas fa-calendar-alt text-secondary"></i> Appointment Details</h2>
+                    <div class="form-group">
+                        <label>Owner Name</label>
+                        <input type="text" id="ownerName" class="form-control" placeholder="Enter your full name">
+                    </div>
+                    <div class="grid-2" style="gap: 15px;">
+                        <div class="form-group">
+                            <label>Appointment Date</label>
+                            <input type="date" id="appDate" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Preferred Time</label>
+                            <select id="appTime" class="form-control">
+                                <option>09:00 - 11:00</option>
+                                <option>13:00 - 15:00</option>
+                                <option>16:00 - 18:00</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="shipping-form" class="bag-section hidden">
+                    <h2 style="font-size: 1.3rem; margin-bottom: 20px;"><i class="fas fa-truck text-secondary"></i> Delivery / Pickup</h2>
+                    <div class="form-group">
+                        <label>Delivery Method</label>
+                        <select id="deliveryMethod" class="form-control" onchange="toggleDelivery()">
+                            <option value="delivery">Home Delivery (IDR 15,000)</option>
+                            <option value="pickup">Pick up at Clinic (Free)</option>
+                        </select>
+                    </div>
+                    <div id="address-area">
+                        <div class="form-group">
+                            <label>Shipping Address</label>
+                            <textarea id="addressInput" class="form-control" placeholder="Enter full delivery address..." style="height: 80px;"></textarea>
+                        </div>
+                    </div>
+                    <div id="pickup-area" class="hidden">
+                        <div class="form-group">
+                            <label>Pickup Date & Time</label>
+                            <input type="datetime-local" id="pickupTime" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bag-section" style="position: sticky; top: 100px;">
+                <h2 style="font-size: 1.5rem; margin-bottom: 25px;">Summary</h2>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                    <span style="color: #666;">Subtotal</span> <b id="subtotal">IDR 0</b>
+                </div>
+                <div id="shipping-fee-row" style="display: none; justify-content: space-between; margin-bottom: 12px;">
+                    <span style="color: #666;">Shipping Fee</span> <b>IDR 15,000</b>
+                </div>
+                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+                <div style="display: flex; justify-content: space-between; font-size: 1.4rem; margin-bottom: 30px;">
+                    <span>Total</span> <b class="text-secondary" id="total-price">IDR 0</b>
+                </div>
+                <button class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 1.1rem;" onclick="validateAndPay()">Proceed to Payment</button>
+            </div>
+        </div>
+    </main>
+
+    <div id="paymentModal">
+        <div class="modal-premium">
+            <div class="modal-header-color">
+                <i class="fas fa-university" style="font-size: 2.5rem; margin-bottom: 10px;"></i>
+                <h2 style="margin:0;">Bank Transfer</h2>
+            </div>
+            <div style="padding: 30px;">
+                <p style="text-align:center; color:#666; font-size:0.9rem; margin-bottom:20px;">Please transfer the exact amount to:</p>
+                <div class="bank-card">
+                    <div class="bank-line"><span style="color:#64748b">Bank</span><strong>VetAnimative Central</strong></div>
+                    <div class="bank-line"><span style="color:#64748b">Acc No.</span><strong>9901 2233 4455</strong></div>
+                    <div class="bank-line" style="border:none; margin-top:10px; padding-top:10px; border-top:2px dashed #cbd5e1;">
+                        <span>Total Pay</span><strong id="payAmount" style="color:#2ecc71; font-size:1.3rem;"></strong>
+                    </div>
+                </div>
+                <button class="btn btn-primary" style="width:100%; border-radius:15px;" onclick="confirmSuccess()">I've Transferred</button>
+                <button onclick="closePayment()" style="width:100%; background:none; border:none; color:#999; margin-top:15px; cursor:pointer;">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if(typeof renderBag === "function") renderBag();
+            checkForms();
+        });
+
+        function checkForms() {
+            const bag = JSON.parse(localStorage.getItem('vetBag')) || [];
+            const hasService = bag.some(i => i.type === 'service');
+            const hasProduct = bag.some(i => i.type === 'product');
+
+            const sForm = document.getElementById('service-form');
+            const pForm = document.getElementById('shipping-form');
+            const feeRow = document.getElementById('shipping-fee-row');
+
+            // Reset view
+            if(hasService) sForm.classList.remove('hidden'); else sForm.classList.add('hidden');
+            
+            if(hasProduct) {
+                pForm.classList.remove('hidden');
+                toggleDelivery(); // Jalankan logika ongkir sesuai pilihan default
+            } else {
+                pForm.classList.add('hidden');
+                feeRow.style.display = 'none';
+            }
+            updateTotal();
+        }
+
+        function toggleDelivery() {
+            const method = document.getElementById('deliveryMethod').value;
+            const addressArea = document.getElementById('address-area');
+            const pickupArea = document.getElementById('pickup-area');
+            const feeRow = document.getElementById('shipping-fee-row');
+
+            if(method === 'pickup') {
+                addressArea.classList.add('hidden');
+                pickupArea.classList.remove('hidden');
+                feeRow.style.display = 'none';
+            } else {
+                addressArea.classList.remove('hidden');
+                pickupArea.classList.add('hidden');
+                feeRow.style.display = 'flex';
+            }
+            updateTotal();
+        }
+
+        function updateTotal() {
+            const subtotalEl = document.getElementById('subtotal');
+            const totalEl = document.getElementById('total-price');
+            if(!subtotalEl || !totalEl) return;
+
+            const subtotalValue = parseInt(subtotalEl.innerText.replace(/[^0-9]/g, '')) || 0;
+            let total = subtotalValue;
+
+            const bag = JSON.parse(localStorage.getItem('vetBag')) || [];
+            const hasProduct = bag.some(i => i.type === 'product');
+            const method = document.getElementById('deliveryMethod')?.value;
+            
+            if(hasProduct && method === 'delivery') {
+                total += 15000;
+            }
+            
+            totalEl.innerText = "IDR " + total.toLocaleString();
+        }
+
+        function validateAndPay() {
+            const bag = JSON.parse(localStorage.getItem('vetBag')) || [];
+            if(bag.length === 0) return alert("Bag is empty!");
+
+            if(bag.some(i => i.type === 'service')) {
+                if(!document.getElementById('ownerName').value || !document.getElementById('appDate').value) {
+                    return alert("Please fill in Appointment Details!");
+                }
+            }
+
+            if(bag.some(i => i.type === 'product')) {
+                const method = document.getElementById('deliveryMethod').value;
+                if(method === 'delivery' && !document.getElementById('addressInput').value) {
+                    return alert("Please enter shipping address!");
+                }
+                if(method === 'pickup' && !document.getElementById('pickupTime').value) {
+                    return alert("Please select pickup time!");
+                }
+            }
+
+            openPayment();
+        }
+
+        function openPayment() {
+            document.getElementById('payAmount').innerText = document.getElementById('total-price').innerText;
+            document.getElementById('paymentModal').style.display = 'flex';
+        }
+
+        function closePayment() { document.getElementById('paymentModal').style.display = 'none'; }
+
+        function confirmSuccess() {
+            localStorage.removeItem('vetBag');
+            alert("Payment Successful! Our team will contact you via WhatsApp.");
+            location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
